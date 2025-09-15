@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Pokemons!</string>
+    <string name="basePokemon">Nie wybrano żadnego typu pokemonów</string>
+    <string-array name="pokemonTypeList">
+        <item>wodny</item>
+        <item>ognisty</item>
+        <item>trawiasty</item>
+        <item>elektryczny</item>
+    </string-array>
+</resources>
