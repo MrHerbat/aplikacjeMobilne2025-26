@@ -1,10 +1,23 @@
 <resources>
     <string name="app_name">Pokemons!</string>
     <string name="basePokemon">Nie wybrano żadnego typu pokemonów</string>
+    <string name="buttonText">Wyświetl pokemony tego typu!</string>
     <string-array name="pokemonTypeList">
-        <item>wodny</item>
-        <item>ognisty</item>
-        <item>trawiasty</item>
-        <item>elektryczny</item>
+        <item>-</item>
+        <item>Normal</item>
+        <item>Fire</item>
+        <item>Water</item>
+        <item>Grass</item>
+        <item>Electric</item>
+        <item>Ice</item>
+        <item>Fighting</item>
+        <item>Poison</item>
+        <item>Ground</item>
+        <item>Flying</item>
+        <item>Psychic</item>
+        <item>Bug</item>
+        <item>Rock</item>
+        <item>Ghost</item>
+        <item>Dragon</item>
     </string-array>
 </resources>

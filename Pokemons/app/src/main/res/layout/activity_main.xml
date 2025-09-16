@@ -4,31 +4,46 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     tools:context=".MainActivity"
     android:padding="16dp">
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/pokemonBaseType"
         android:layout_marginBottom="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button" />
-
-    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:entries="@array/pokemonTypeList"
+        android:scrollbarAlwaysDrawVerticalTrack="true"/>
+    <Spinner
+        android:id="@+id/pokemonAddType"
+        android:layout_marginBottom="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:entries="@array/pokemonTypeList"
+        android:scrollbarAlwaysDrawVerticalTrack="true"/>
+
+    <Button
+        android:id="@+id/searchForPokemons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/buttonText"
+        android:onClick="onClickFindPokemons"/>
+
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_margin="18dp"
+        android:id="@+id/pokemonDisplay"
         android:text="@string/basePokemon"
         tools:layout_editor_absoluteX="2dp"
-        tools:layout_editor_absoluteY="68dp" />
+        tools:layout_editor_absoluteY="68dp"
+        android:scrollbars = "vertical"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        />
 
 </LinearLayout>
