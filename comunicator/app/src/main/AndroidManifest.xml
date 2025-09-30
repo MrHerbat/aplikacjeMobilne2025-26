@@ -13,11 +13,6 @@
         android:theme="@style/Theme.Comunicator"
         tools:targetApi="31">
         <activity
-            android:name=".SendActivity"
-            android:exported="false"
-            android:label="@string/title_activity_send"
-            android:theme="@style/Theme.Comunicator" />
-        <activity
             android:name=".ReceiveMessageActivity"
             android:exported="false" />
         <activity
@@ -25,8 +20,8 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="*/*"/>
             </intent-filter>
         </activity>
     </application>

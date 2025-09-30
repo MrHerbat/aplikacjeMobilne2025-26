@@ -21,7 +21,8 @@ public class CreateMessageActivity extends AppCompatActivity {
         //Intent intent = new Intent(this, ReceiveMessageActivity.class);
         //intent.putExtra(ReceiveMessageActivity.EXTRA_MESSAGE, messageView.getText());
         Intent intent = new Intent(Intent.ACTION_SEND);
-        Intent choosenIntent = Intent.createChooser(intent,"Wysyłanie wiadomości...");
+        String chooserTitle = getString(R.string.chooser);
+        Intent choosenIntent = Intent.createChooser(intent,chooserTitle);
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_TEXT,messageText);
         startActivity(choosenIntent);

@@ -13,12 +13,12 @@
         android:theme="@style/Theme.Coms2"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".SendMessageActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+                <data android:mimeType="*/*"/>
             </intent-filter>
         </activity>
     </application>

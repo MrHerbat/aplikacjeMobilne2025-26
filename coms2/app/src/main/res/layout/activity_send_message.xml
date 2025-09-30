@@ -8,19 +8,28 @@
     android:orientation="vertical"
     tools:context=".SendMessageActivity">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="app 2"
+        android:textAlignment="center"/>
+
     <EditText
-        android:id="@+id/sendMessage"
+        android:id="@+id/message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:hint="@string/hint"
         android:ems="12"
         />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/sendButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="@string/sendButton"
+        android:onClick="onSendMessage"/>
 
 
 </LinearLayout>

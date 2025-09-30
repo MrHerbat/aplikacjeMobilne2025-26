@@ -16,4 +16,16 @@ public class SendMessageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send_message);
     }
+
+    public void onSendMessage(View view){
+        EditText messageView = findViewById(R.id.message);
+        String messageText = messageView.getText().toString();
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT,messageText);
+        startActivity(intent);
+    }
+
+
 }
