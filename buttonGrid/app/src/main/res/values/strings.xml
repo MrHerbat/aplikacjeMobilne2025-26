@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">buttonGrid</string>
+    <string name="reset">Reset Board</string>
+</resources>
