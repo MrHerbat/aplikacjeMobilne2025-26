@@ -1,23 +1,13 @@
 package com.example.buttongrid;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.locks.Lock;
 
 public class MainActivity extends AppCompatActivity {
-    private boolean ticTacToe = true;
+    private boolean turn = true;
     private Button[][] buttonBoard = new Button[3][3];
     private char board[][] = new char[3][3];
 
@@ -27,33 +17,33 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getButtons();
-        ResetBoard();
+        resetBoard();
     }
-    public void SetClickedButtonToX(View view){
+    public void setClickedButtonToX(View view){
         Button clickedButton = findViewById(view.getId());
         if(clickedButton.getText().equals(" "))
         {
-            if(ticTacToe){
+            if(turn){
                 clickedButton.setText("X");
                 clickedButton.setEnabled(false);
-                ticTacToe=false;
+                turn =false;
             }else{
                 clickedButton.setText("O");
                 clickedButton.setEnabled(false);
-                ticTacToe=true;
+                turn =true;
             }
         }
         getButtons();
-        HasWon();
+        hasWon();
     }
-    public void HasWon(){
+    public void hasWon(){
         for (int i = 0; i < 3; i++) {
             if((board[i][0]==board[i][1]&&board[i][1]==board[i][2])&&
                     (board[i][0]!=' '&&board[i][1]!=' '&&board[i][2]!=' ')){
                 buttonBoard[i][0].setBackgroundColor(getResources().getColor(R.color.green));
                 buttonBoard[i][1].setBackgroundColor(getResources().getColor(R.color.green));
                 buttonBoard[i][2].setBackgroundColor(getResources().getColor(R.color.green));
-                LockAllButtons();
+                lockAllButtons();
             }
         }
         for (int i = 0; i < 3; i++) {
@@ -62,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 buttonBoard[0][i].setBackgroundColor(getResources().getColor(R.color.green));
                 buttonBoard[1][i].setBackgroundColor(getResources().getColor(R.color.green));
                 buttonBoard[2][i].setBackgroundColor(getResources().getColor(R.color.green));
-                LockAllButtons();
+                lockAllButtons();
             }
         }
         if ((board[0][0] == board[1][1] && board[1][1] == board[2][2])&&
@@ -70,17 +60,17 @@ public class MainActivity extends AppCompatActivity {
             buttonBoard[0][0].setBackgroundColor(getResources().getColor(R.color.green));
             buttonBoard[1][1].setBackgroundColor(getResources().getColor(R.color.green));
             buttonBoard[2][2].setBackgroundColor(getResources().getColor(R.color.green));
-            LockAllButtons();
+            lockAllButtons();
         }
         if ((board[2][0] == board[1][1] && board[1][1] == board[0][2])&&
                 (board[2][0]!=' '&&board[1][1]!=' '&&board[0][2]!=' ')) {
             buttonBoard[2][0].setBackgroundColor(getResources().getColor(R.color.green));
             buttonBoard[1][1].setBackgroundColor(getResources().getColor(R.color.green));
             buttonBoard[0][2].setBackgroundColor(getResources().getColor(R.color.green));
-            LockAllButtons();
+            lockAllButtons();
         }
     }
-    public void ResetBoard(View view){
+    public void resetBoard(View view){
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 buttonBoard[i][j].setText(" ");
@@ -89,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-    public void ResetBoard(){
+    public void resetBoard(){
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 buttonBoard[i][j].setText(" ");
@@ -98,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-    public void LockAllButtons(){
+    public void lockAllButtons(){
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 buttonBoard[i][j].setEnabled(false);
