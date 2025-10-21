@@ -13,14 +13,39 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-    private boolean running = false;
+    private boolean running = false, wasRunning;
     private int seconds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if(savedInstanceState != null){
+            seconds = savedInstanceState.getInt("seconds");
+            running = savedInstanceState.getBoolean("running");
+            wasRunning = savedInstanceState.getBoolean("wasRunning");
+        }
         runTimer();
+    }
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putInt("seconds", seconds);
+        savedInstanceState.putBoolean("running", running);
+        savedInstanceState.putBoolean("wasRunning", wasRunning);
+    }
+    @Override
+    protected void onPause(){
+        super.onPause();
+        wasRunning=running;
+        running=false;
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
+        if (wasRunning){
+            running=true;
+        }
     }
 
     public void onClickStart(View view) {
