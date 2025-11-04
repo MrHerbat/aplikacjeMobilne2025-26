@@ -7,7 +7,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-    private boolean turn = true;
+    private boolean turn = true, wasPlaying = false;
     private Button[][] buttonBoard = new Button[3][3];
     private char board[][] = new char[3][3];
 
@@ -17,9 +17,48 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getButtons();
-        resetBoard();
+        resetBoard(this.getCurrentFocus());
+        if(savedInstanceState!=null){
+            board[0]=savedInstanceState.getCharArray("board0");
+            board[1]=savedInstanceState.getCharArray("board1");
+            board[2]=savedInstanceState.getCharArray("board2");
+            turn=savedInstanceState.getBoolean("turn");
+            wasPlaying=savedInstanceState.getBoolean("wasPlaying");
+        }
     }
-    public void setClickedButtonToX(View view){
+    @Override
+    protected void onResume(){
+        super.onResume();
+        getButtonBoard();
+        if(wasPlaying){
+            setButtonText();
+            hasWon();
+        }
+    }
+    @Override
+    protected void onPause(){
+        super.onPause();
+        wasPlaying=true;
+    }
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState){
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putCharArray("board0",board[0]);
+        savedInstanceState.putCharArray("board1",board[1]);
+        savedInstanceState.putCharArray("board2",board[2]);
+        savedInstanceState.putBoolean("turn", turn);
+        savedInstanceState.putBoolean("wasPlaying",wasPlaying);
+    }
+
+    private void setButtonText() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                buttonBoard[i][j].setText(Character.toString(board[i][j]));
+            }
+        }
+    }
+
+    public void setClickedButtonLabel(View view){
         Button clickedButton = findViewById(view.getId());
         if(clickedButton.getText().equals(" "))
         {
@@ -74,15 +113,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 buttonBoard[i][j].setText(" ");
-                buttonBoard[i][j].setEnabled(true);
-                buttonBoard[i][j].setBackgroundColor(getResources().getColor(R.color.purple));
-            }
-        }
-    }
-    public void resetBoard(){
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                buttonBoard[i][j].setText(" ");
+                board[i][j] = ' ';
                 buttonBoard[i][j].setEnabled(true);
                 buttonBoard[i][j].setBackgroundColor(getResources().getColor(R.color.purple));
             }
@@ -95,13 +126,24 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-    public void getButtons(){
+    private void getButtonBoard(){
         int x=1;
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                int id = getResources().getIdentifier("button"+x,"id",getPackageName());
-                buttonBoard[i][j]=(Button) findViewById(id);
-                board[i][j]=buttonBoard[i][j].getText().charAt(0);
+                int id = getResources().getIdentifier(("button"+x),"id",getPackageName());
+                buttonBoard[i][j]= (Button)findViewById(id);
+                buttonBoard[i][j].setTextColor(getResources().getColor(R.color.black));
+                x++;
+            }
+        }
+    }
+    private void getButtons() {
+        int x = 1;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                int id = getResources().getIdentifier(("button" + x), "id", getPackageName());
+                buttonBoard[i][j] = (Button) findViewById(id);
+                board[i][j] = buttonBoard[i][j].getText().charAt(0);
                 buttonBoard[i][j].setTextColor(getResources().getColor(R.color.black));
                 x++;
             }

@@ -1,14 +1,4 @@
 <resources>
     <string name="app_name">Dice</string>
-    <string-array name="dices">
-        <item>K4</item>
-        <item>K6</item>
-        <item>K8</item>
-        <item>K10 unit</item>
-        <item>K10 decimal</item>
-        <item>K12</item>
-        <item>K20</item>
-        <item>K100</item>
-    </string-array>
     <string name="roll">Roll the Dice</string>
 </resources>
