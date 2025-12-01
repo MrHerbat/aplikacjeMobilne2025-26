@@ -3,6 +3,7 @@ package com.example.learningframelayout;
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
@@ -17,9 +18,10 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageView[] imageViewCards = new ImageView[4];
+    ImageView[] imageViewCards = new ImageView[5];
     public Bitmap bitmap;
     Bitmap[][] cards = new Bitmap[4][13];
+    Bitmap[] playedCards = new Bitmap[5];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         spriteSheetToArray();
         getAllImageView();
-        //randomizeCards();
+        randomizeCards();
     }
 
     void spriteSheetToArray(){
@@ -41,16 +43,31 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     void getAllImageView(){
-        for (int i = 1; i <= 5; i++) {
-            int id = getResources().getIdentifier(("card"+i), "id", getPackageName());
-            imageViewCards[(i-1)] = findViewById(id);
+        for (int i = 0; i < 5; i++) {
+            int id = getResources().getIdentifier(("card"+(i+1)), "id", getPackageName());
+            imageViewCards[i] = findViewById(id);
         }
     }
     void randomizeCards(){
+        int z = 0;
         Random rand = new Random();
         for (ImageView temp:
              imageViewCards) {
-            temp.setImageBitmap(cards[rand.nextInt(4)][rand.nextInt(13)]);
+            int x = rand.nextInt(4), y = rand.nextInt(13);
+            playedCards[z] = cards[x][y];
+            temp.setImageBitmap(cards[x][y]);
+            z++;
         }
+    }
+    public void moveCard(View view){
+        int idTop = getResources().getIdentifier(("card"+5), "id", getPackageName());
+        ImageView newTopImage = findViewById(view.getId()), oldTopImage = findViewById(idTop);
+        Bitmap temp = ((BitmapDrawable)oldTopImage.getDrawable()).getBitmap();
+        oldTopImage.setImageBitmap(((BitmapDrawable)newTopImage.getDrawable()).getBitmap());
+        newTopImage.setImageBitmap(temp);
+    }
+
+    public void changeHand(View view){
+        randomizeCards();
     }
 }
