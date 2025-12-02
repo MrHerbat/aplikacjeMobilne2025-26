@@ -7,6 +7,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,12 +15,15 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
     ImageView[] imageViewCards = new ImageView[5];
     public Bitmap bitmap;
+    int prevId = 0;
+    ArrayList<Bitmap> cardsList = new ArrayList<>();
     Bitmap[][] cards = new Bitmap[4][13];
     Bitmap[] playedCards = new Bitmap[5];
 
@@ -39,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 13; j++) {
                 cards[i][j] = Bitmap.createBitmap(bitmap,j*741,i*1157,741,1157);
+                cardsList.add(Bitmap.createBitmap(bitmap,j*741,i*1157,741,1157));
             }
         }
     }
@@ -49,22 +54,27 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     void randomizeCards(){
-        int z = 0;
+        //int z = 0;
         Random rand = new Random();
+        ArrayList<Bitmap> tempList = cardsList;
         for (ImageView temp:
              imageViewCards) {
-            int x = rand.nextInt(4), y = rand.nextInt(13);
-            playedCards[z] = cards[x][y];
-            temp.setImageBitmap(cards[x][y]);
-            z++;
+            int x = rand.nextInt(tempList.size());
+            //playedCards[z] = cards[x][y];
+            temp.setImageBitmap(tempList.get(x));
+            tempList.remove(x);
+            //z++;
         }
     }
     public void moveCard(View view){
-        int idTop = getResources().getIdentifier(("card"+5), "id", getPackageName());
-        ImageView newTopImage = findViewById(view.getId()), oldTopImage = findViewById(idTop);
-        Bitmap temp = ((BitmapDrawable)oldTopImage.getDrawable()).getBitmap();
-        oldTopImage.setImageBitmap(((BitmapDrawable)newTopImage.getDrawable()).getBitmap());
-        newTopImage.setImageBitmap(temp);
+        ImageView temp;
+        if(prevId!=0){
+            temp = findViewById(prevId);
+            temp.setTranslationZ(0);
+        }else{
+            prevId=view.getId();
+            view.setTranslationZ(0.01f);
+        }
     }
 
     public void changeHand(View view){
