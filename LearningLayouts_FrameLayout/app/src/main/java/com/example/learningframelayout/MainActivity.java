@@ -68,12 +68,22 @@ public class MainActivity extends AppCompatActivity {
     }
     public void moveCard(View view){
         ImageView temp;
+        for (ImageView iv:
+             imageViewCards) {
+           iv.setTranslationZ(0);
+        }
         if(prevId!=0){
-            temp = findViewById(prevId);
-            temp.setTranslationZ(0);
+            if(prevId==view.getId()){
+                view.setTranslationZ(0);
+                prevId=0;
+            }else{
+                view.setTranslationZ(0.01f);
+                temp = findViewById(prevId);
+                temp.setTranslationZ(0);
+            }
         }else{
-            prevId=view.getId();
             view.setTranslationZ(0.01f);
+            prevId = view.getId();
         }
     }
 
