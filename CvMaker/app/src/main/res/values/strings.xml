@@ -6,9 +6,10 @@
     <string name="personBirthDateHint">DD.MM.RRRR</string>
     <string name="experience">Doświadczenie zawodowe</string>
     <string name="education">Wykształcenie</string>
-    <string name="languages">Znajomość Języków (oddzielane przecinkami)</string>
+    <string name="languages">Znajomość Języków</string>
     <string name="languagesHint">[Język - poziom],</string>
     <string name="skills">Umięjętności</string>
     <string name="hobbies">Zainteresowania</string>
-    <string name="send">Prześlij</string>
+    <string name="send">Prześlij CV</string>
+    <string name="lock">Zablokuj edycję</string>
 </resources>
