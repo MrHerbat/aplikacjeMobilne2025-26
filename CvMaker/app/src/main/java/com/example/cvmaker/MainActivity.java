@@ -165,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
                 personExperience = findViewById(R.id.experience),
                 personLanguages = findViewById(R.id.languages),
                 personSkills = findViewById(R.id.skills),
-                personHobbies = findViewById(R.id.languages);
+                personHobbies = findViewById(R.id.hobbies);
         RadioButton podstawowe = findViewById(R.id.podstawowe),
                 zawodowe = findViewById(R.id.zawodowe),
                 srednie = findViewById(R.id.srednie),
