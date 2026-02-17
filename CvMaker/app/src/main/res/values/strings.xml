@@ -1,15 +1,18 @@
 <resources>
     <string name="app_name">Cv Maker</string>
+    <string name="title">Curriculum Vitae</string>
     <string name="personEmail">Adres E-mail</string>
     <string name="personNameHint">Imię i Nazwisko</string>
     <string name="personPhoneHint">Numer Telefonu</string>
     <string name="personBirthDateHint">DD.MM.RRRR</string>
-    <string name="experience">Doświadczenie zawodowe</string>
-    <string name="education">Wykształcenie</string>
-    <string name="languages">Znajomość Języków</string>
+    <string name="experience">Doświadczenie zawodowe:</string>
+    <string name="education">Wykształcenie:</string>
+    <string name="languages">Znajomość Języków:</string>
     <string name="languagesHint">[Język - poziom],</string>
-    <string name="skills">Umięjętności</string>
-    <string name="hobbies">Zainteresowania</string>
+    <string name="skills">Umięjętności:</string>
+    <string name="hobbies">Zainteresowania:</string>
+    <string name="acknowledge">Wyrażam zgodę na przetwarzanie moich danych osobowych dla potrzeb niezbędnych do realizacji procesu rekrutacji (zgodnie z ustawą z dnia 10 maja 2018 roku o ochronie danych osobowych oraz Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679)</string>
     <string name="send">Prześlij CV</string>
-    <string name="lock">Zablokuj edycję</string>
+    <string name="lockOff">Zablokuj edycję</string>
+    <string name="lockOn">Odblokuj edycję</string>
 </resources>

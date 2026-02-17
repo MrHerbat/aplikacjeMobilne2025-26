@@ -9,10 +9,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -52,7 +56,7 @@ class Person{
 
     @Override
     public String toString() {
-        return "E-mail: "+email+"\n"+
+        return "Adres e-mail: "+email+"\n"+
                 "Numer telefonu: "+phoneNumber+"\n"+
                 "Data urodzenia: "+birthDate+"\n"+
                 "Doświadczenie: "+experience+"\n"+
@@ -65,8 +69,6 @@ class Person{
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<Person> listOfCVs = new ArrayList<>();
-    boolean locked = true;
-
     int SELECT_PICTURE = 150;
     Uri selectedImage;
 
@@ -79,6 +81,34 @@ public class MainActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+        findViewById(R.id.send).setEnabled(false);
+        Switch lock = findViewById(R.id.lock);
+        lock.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                findViewById(R.id.nameAndSurname).setEnabled(!isChecked);
+                findViewById(R.id.email).setEnabled(!isChecked);
+                findViewById(R.id.phoneNumber).setEnabled(!isChecked);
+                findViewById(R.id.birthDate).setEnabled(!isChecked);
+                findViewById(R.id.experience).setEnabled(!isChecked);
+                findViewById(R.id.languages).setEnabled(!isChecked);
+                findViewById(R.id.skills).setEnabled(!isChecked);
+                findViewById(R.id.hobbies).setEnabled(!isChecked);
+                findViewById(R.id.podstawowe).setEnabled(!isChecked);
+                findViewById(R.id.zawodowe).setEnabled(!isChecked);
+                findViewById(R.id.srednie).setEnabled(!isChecked);
+                findViewById(R.id.wyzsze).setEnabled(!isChecked);
+                findViewById(R.id.imageButton).setEnabled(!isChecked);
+            }
+        });
+        CheckBox check = findViewById(R.id.acknowledge);
+        check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                findViewById(R.id.send).setEnabled(isChecked);
+            }
         });
     }
     void imageChooser(){
@@ -155,35 +185,5 @@ public class MainActivity extends AppCompatActivity {
             submittedInformations.setText(person.toString());
 
         }
-    }
-
-    public void lockCv(View view) {
-        TextView personNameAndSurname = findViewById(R.id.nameAndSurname),
-                personEmail = findViewById(R.id.email),
-                personPhoneNumber = findViewById(R.id.phoneNumber),
-                personBirthDate = findViewById(R.id.birthDate),
-                personExperience = findViewById(R.id.experience),
-                personLanguages = findViewById(R.id.languages),
-                personSkills = findViewById(R.id.skills),
-                personHobbies = findViewById(R.id.hobbies);
-        RadioButton podstawowe = findViewById(R.id.podstawowe),
-                zawodowe = findViewById(R.id.zawodowe),
-                srednie = findViewById(R.id.srednie),
-                wyzsze = findViewById(R.id.wyzsze);
-        ImageButton profileButton = findViewById(R.id.imageButton);
-        locked = !locked;
-        personNameAndSurname.setEnabled(locked);
-        personEmail.setEnabled(locked);
-        personPhoneNumber.setEnabled(locked);
-        personBirthDate.setEnabled(locked);
-        personExperience.setEnabled(locked);
-        personLanguages.setEnabled(locked);
-        personSkills.setEnabled(locked);
-        personHobbies.setEnabled(locked);
-        podstawowe.setEnabled(locked);
-        zawodowe.setEnabled(locked);
-        srednie.setEnabled(locked);
-        wyzsze.setEnabled(locked);
-        profileButton.setEnabled(locked);
     }
 }
