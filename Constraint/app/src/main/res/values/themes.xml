@@ -1,0 +1,57 @@
+<resources>
+    <style name="main">
+        <item name="fontFamily">Segoe UI</item>
+        <item name="backgroundColor">@color/calc_bg</item>
+    </style>
+    <style name="CalcBtnWhite" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_margin">1dp</item>
+        <item name="android:textColor">@color/text_main</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="backgroundTint">@color/btn_white</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.SmallComponent</item>
+    </style>
+    <style name="CalcBtnGrayish" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_margin">1dp</item>
+        <item name="android:textColor">@color/text_main</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="backgroundTint">@color/btn_darker_white</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.SmallComponent</item>
+    </style>
+    <style name="CalcBtnEquals" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_margin">1dp</item>
+        <item name="android:textColor">@color/text_main</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="backgroundTint">@color/btn_equals</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.SmallComponent</item>
+    </style>
+
+    <style name="MemBtn">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/text_mem</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="backgroundTint">@color/calc_bg</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.SmallComponent</item>
+    </style>
+
+    <style name="ShapeAppearance.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerSize">0dp</item>
+    </style>
+</resources>
