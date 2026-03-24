@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class DrinkActivity extends Activity {
-    public static final String EXTRA_DRINKID = "drinkId";
+    public static final String EXTRA_DRINK_ID = "drinkId";
 
 
     @Override
@@ -14,7 +14,7 @@ public class DrinkActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drink);
 
-        int drinkId = (Integer)getIntent().getExtras().get(EXTRA_DRINKID);
+        int drinkId = (Integer)getIntent().getExtras().get(EXTRA_DRINK_ID);
         Drink drink = Drink.drinks[drinkId];
 
         TextView name = findViewById(R.id.name);

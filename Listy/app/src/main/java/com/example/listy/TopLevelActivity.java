@@ -16,9 +16,14 @@
                     new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> listView, View itemView, int position, long id){
+                            Intent intent;
                             switch (position){
                                 case 0:
-                                    Intent intent = new Intent(TopLevelActivity.this, DrinkCategoryActivity.class);
+                                    intent = new Intent(TopLevelActivity.this, DrinkCategoryActivity.class);
+                                    startActivity(intent);
+                                    break;
+                                case 1:
+                                    intent = new Intent(TopLevelActivity.this, SnackCategoryActivity.class);
                                     startActivity(intent);
                                     break;
                                 default:
