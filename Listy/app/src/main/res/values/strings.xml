@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Listy</string>
+    <string-array name="options">
+        <item>Napoje</item>
+        <item>Przekąski</item>
+        <item>Kafeterie</item>
+    </string-array>
+</resources>
