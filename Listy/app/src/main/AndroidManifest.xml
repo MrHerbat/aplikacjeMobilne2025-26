@@ -24,6 +24,8 @@
         <activity android:name=".DrinkActivity" />
         <activity android:name=".SnackActivity" />
         <activity android:name=".SnackCategoryActivity" />
+        <activity android:name=".CafeteriaActivity" />
+        <activity android:name=".CafeteriaCategoryActivity" />
     </application>
 
 </manifest>

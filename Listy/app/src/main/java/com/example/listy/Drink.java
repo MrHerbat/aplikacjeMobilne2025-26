@@ -8,7 +8,7 @@ public class Drink {
 
     public static final Drink[] drinks = {
             new Drink("Latte","Czarne espresso z gorącym mlekiem i mleczną pianą",R.drawable.latte),
-            new Drink("Cappuccino","Czarne espresso z dużą ilością spienionego mleka",R.drawable.cappucino),
+            new Drink("Cappuccino","Czarne espresso z dużą ilością spienionego mleka",R.drawable.cappuccino),
             new Drink("Espresso","Czarna kawa z świeżo zmielonych ziaren najwyższej jakości",R.drawable.espresso)
     };
 

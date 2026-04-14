@@ -2,10 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:id="@+id/drinkActivity"
+    android:id="@+id/cafeteriaActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DrinkActivity"
+    tools:context=".CafeteriaActivity"
     android:paddingTop="40dp">
 
     <ImageView
@@ -19,6 +19,11 @@
         android:textSize="20sp"
         android:layout_marginBottom="5dp"
         android:id="@+id/name"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/adres"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

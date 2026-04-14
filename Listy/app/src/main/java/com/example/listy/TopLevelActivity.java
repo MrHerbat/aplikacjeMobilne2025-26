@@ -26,6 +26,10 @@
                                     intent = new Intent(TopLevelActivity.this, SnackCategoryActivity.class);
                                     startActivity(intent);
                                     break;
+                                case 2:
+                                    intent = new Intent(TopLevelActivity.this, CafeteriaCategoryActivity.class);
+                                    startActivity(intent);
+                                    break;
                                 default:
                                     break;
                             }
