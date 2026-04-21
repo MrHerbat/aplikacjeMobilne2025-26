@@ -1,9 +1,16 @@
 package com.example.listy;
 
 import android.app.Activity;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 public class CafeteriaActivity extends Activity {
     public static final String EXTRA_CAFETERIA_ID = "cafeteriaId";
@@ -15,19 +22,40 @@ public class CafeteriaActivity extends Activity {
         setContentView(R.layout.activity_cafeteria);
 
         int cafeteriaId = (Integer)getIntent().getExtras().get(EXTRA_CAFETERIA_ID);
-        Cafeteria cafeteria = Cafeteria.cafeterias[cafeteriaId];
+        try{
+            SQLiteOpenHelper kawiarniaDatabaseHelper = new KawiarniaDatabaseHelper(this);
+            SQLiteDatabase db = kawiarniaDatabaseHelper.getReadableDatabase();
+            Cursor cursor = db.query("LOCATION",new String[]{"NAME","ADDRESS","DESCRIPTION","IMAGE_RESOURCE_ID"},
+                    "_id=?",new String[] {Integer.toString(cafeteriaId)},
+                    null,null,null);
+            if(cursor.moveToFirst()){
+                String nameText = cursor.getString(0),
+                        addressText = cursor.getString(1),
+                        description = cursor.getString(2);
+                int photoId = cursor.getInt(3);
 
-        TextView name = findViewById(R.id.name);
-        name.setText(cafeteria.getName());
+                setContentView(R.layout.activity_snack);
 
-        TextView adres = findViewById(R.id.adres);
-        adres.setText(cafeteria.getAdres());
+                TextView name = findViewById(R.id.name);
+                name.setText(nameText);
 
-        TextView desc = findViewById(R.id.description);
-        desc.setText(cafeteria.getDesc());
+                TextView address = findViewById(R.id.address);
+                address.setText(addressText);
 
-        ImageView photo = findViewById(R.id.photo);
-        photo.setImageResource(cafeteria.getImgResId());
-        photo.setContentDescription(cafeteria.getName());
+
+                TextView desc = findViewById(R.id.description);
+                desc.setText(description);
+
+                ImageView photo = findViewById(R.id.photo);
+                photo.setImageResource(photoId);
+                photo.setContentDescription(nameText);
+            }
+            cursor.close();
+            db.close();
+        }catch(SQLException e){
+            Toast toast = Toast.makeText(this, e.toString(),
+                    Toast.LENGTH_LONG);
+            toast.show();
+        }
     }
 }

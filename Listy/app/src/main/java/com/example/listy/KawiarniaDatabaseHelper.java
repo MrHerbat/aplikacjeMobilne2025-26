@@ -43,12 +43,12 @@ public class KawiarniaDatabaseHelper extends SQLiteOpenHelper {
     }
     private static void insertLocation(SQLiteDatabase db, String name, String address,
                                     String description, int resourceId) {
-        ContentValues snackValues = new ContentValues();
-        snackValues.put("NAME", name);
-        snackValues.put("ADDRESS", address);
-        snackValues.put("DESCRIPTION", description);
-        snackValues.put("IMAGE_RESOURCE_ID", resourceId);
-        db.insert("SNACK", null, snackValues);
+        ContentValues locationValue = new ContentValues();
+        locationValue.put("NAME", name);
+        locationValue.put("ADDRESS", address);
+        locationValue.put("DESCRIPTION", description);
+        locationValue.put("IMAGE_RESOURCE_ID", resourceId);
+        db.insert("LOCATION", null, locationValue);
     }
 
     private void updateMyDatabase(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -87,15 +87,18 @@ public class KawiarniaDatabaseHelper extends SQLiteOpenHelper {
                     + "ADDRESS TEXT, "
                     + "DESCRIPTION TEXT, "
                     + "IMAGE_RESOURCE_ID INTEGER);");
-            insertLocation(db,"Tociekawa","Kraków, Długa 37","Kawiarnia o swobodnej atmosferze oferująca szeroki wybór napojów zimnych i gorących oraz ciast i przekąsek.",R.drawable.tociekawka);
-            insertLocation(db,"Czyżyk","Kraków, Bolesława Orlińskiego","Fantastycka sąsiedzka kawiarnia na Avii, ze świetne śniadania, pyszną kawę i świeże wypieki.",R.drawable.czyzyk);
-            insertLocation(db,"COFEE GARDEN ","Kraków, Józefa 11","Kawiarnia z fajnym klimatem i przede wszystkim serwująca różne alternatywne kawy.",R.drawable.cofee_garden);
+            insertLocation(db,"Tociekawa",
+                    "Kraków, Długa 37",
+                    "Kawiarnia o swobodnej atmosferze oferująca szeroki wybór napojów zimnych i gorących oraz ciast i przekąsek.",
+                    R.drawable.tociekawka);
+            insertLocation(db,"Czyżyk",
+                    "Kraków, Bolesława Orlińskiego",
+                    "Fantastycka sąsiedzka kawiarnia na Avii, ze świetne śniadania, pyszną kawę i świeże wypieki.",
+                    R.drawable.czyzyk);
+            insertLocation(db,"COFEE GARDEN","Kraków, Józefa 11",
+                    "Kawiarnia z fajnym klimatem i przede wszystkim serwująca różne alternatywne kawy.",
+                    R.drawable.cofee_garden);
 
-        }
-        if (oldVersion < 3) {
-            db.execSQL("ALTER TABLE DRINK ADD COLUMN FAVORITE NUMERIC;");
-            db.execSQL("ALTER TABLE LOCATION ADD COLUMN FAVORITE NUMERIC;");
-            db.execSQL("ALTER TABLE SNACK ADD COLUMN FAVORITE NUMERIC;");
         }
     }
 }
