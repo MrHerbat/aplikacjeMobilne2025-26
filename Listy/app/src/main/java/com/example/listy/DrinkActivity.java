@@ -21,7 +21,7 @@ public class DrinkActivity extends Activity {
         try{
             SQLiteOpenHelper kawiarniaDatabaseHelper = new KawiarniaDatabaseHelper(this);
             SQLiteDatabase db = kawiarniaDatabaseHelper.getReadableDatabase();
-            Cursor cursor = db.query("DRINK",new String[]{"NAME","DESC","IMAGE_RESOURCE_ID"},
+            Cursor cursor = db.query("DRINK",new String[]{"NAME","DESCRIPTION","IMAGE_RESOURCE_ID"},
                     "_id=?",new String[] {Integer.toString(drinkId)},
                     null,null,null);
             if(cursor.moveToFirst()){
@@ -45,8 +45,8 @@ public class DrinkActivity extends Activity {
             cursor.close();
 
         }catch(SQLException e){
-            Toast toast = Toast.makeText(this, "baza danych niedostępna", Toast.LENGTH_SHORT);
-
+            Toast toast = Toast.makeText(this, e.toString(),
+                    Toast.LENGTH_LONG);
             toast.show();
         }
 
