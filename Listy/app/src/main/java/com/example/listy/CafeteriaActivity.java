@@ -34,14 +34,13 @@ public class CafeteriaActivity extends Activity {
                         description = cursor.getString(2);
                 int photoId = cursor.getInt(3);
 
-                setContentView(R.layout.activity_snack);
+                setContentView(R.layout.activity_cafeteria);
 
                 TextView name = findViewById(R.id.name);
                 name.setText(nameText);
 
                 TextView address = findViewById(R.id.address);
                 address.setText(addressText);
-
 
                 TextView desc = findViewById(R.id.description);
                 desc.setText(description);
@@ -53,8 +52,8 @@ public class CafeteriaActivity extends Activity {
             cursor.close();
             db.close();
         }catch(SQLException e){
-            Toast toast = Toast.makeText(this, e.toString(),
-                    Toast.LENGTH_LONG);
+            Toast toast = Toast.makeText(this, "Problem połączenia z bazą danych",
+                    Toast.LENGTH_SHORT);
             toast.show();
         }
     }

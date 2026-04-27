@@ -36,8 +36,8 @@ public class CafeteriaCategoryActivity extends Activity {
                     new int[]{android.R.id.text1},0);
             listView.setAdapter(listAdapter);
         }catch (SQLiteException e){
-            Toast toast = Toast.makeText(this, e.toString(),
-                    Toast.LENGTH_LONG);
+            Toast toast = Toast.makeText(this, "Problem połączenia z bazą danych",
+                    Toast.LENGTH_SHORT);
             toast.show();
         }
         AdapterView.OnItemClickListener itemClickListener =

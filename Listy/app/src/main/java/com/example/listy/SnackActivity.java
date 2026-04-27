@@ -45,8 +45,8 @@ public class SnackActivity extends Activity {
             cursor.close();
             db.close();
         }catch(SQLException e){
-            Toast toast = Toast.makeText(this, e.toString(),
-                    Toast.LENGTH_LONG);
+            Toast toast = Toast.makeText(this, "Problem połączenia z bazą danych",
+                    Toast.LENGTH_SHORT);
             toast.show();
         }
     }

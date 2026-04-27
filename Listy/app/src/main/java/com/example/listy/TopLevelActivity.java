@@ -36,10 +36,10 @@
                         }
                     };
             ListView listView = (ListView) findViewById(R.id.list_options);
-            if (listView != null) {
+            try{
                 listView.setOnItemClickListener(itemClickListener);
-            } else {
-                throw new RuntimeException("ListView with id/list_options not found in activity_top_level layout");
+            } catch (RuntimeException e) {
+                throw new RuntimeException(e);
             }
         }
 
